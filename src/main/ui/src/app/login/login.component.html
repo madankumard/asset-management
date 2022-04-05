@@ -1,0 +1,57 @@
+<ng-template appPlaceholder></ng-template>
+<div class="row">
+  <div class="col-xs-12 col-md-6 col-md-offset-3">
+
+    <div class="alert alert-success" *ngIf="signUpSuccessMsg">
+      <p>{{signUpSuccessMsg}}</p>
+    </div>
+
+    <div *ngIf="isLoading" style="text-align: center">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" *ngIf="!isLoading">
+      <div class="form-group">
+        <label for="name">Username</label>
+        <input type="text"
+               id="name"
+               class="form-control"
+               ngModel
+               name="name"
+               required>
+      </div>
+      <div class="form-group" *ngIf="!isLoginMode">
+        <label for="email">Email</label>
+        <input type="email"
+               id="email"
+               class="form-control"
+               ngModel
+               name="email"
+               required email>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password"
+               id="password"
+               class="form-control"
+               ngModel
+               name="password"
+               required>
+      </div>
+      <div>
+        <button class="btn btn-primary"
+                type="submit"
+                [disabled]="!loginForm.valid"
+                style="margin: 3px">
+          {{ isLoginMode ? 'Login' : 'Sign Up'}}
+        </button>
+        <button class="btn btn-primary"
+                type="button"
+                (click)="onSwitchMode()"
+                style="margin: 3px">
+          Switch to {{isLoginMode ? 'Sign Up' : 'Login'}}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

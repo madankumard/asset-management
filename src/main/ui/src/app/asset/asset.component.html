@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-xs-12">
+    <label>Select Asset</label>
+    <form [formGroup]="assetForm" (ngSubmit)="onSubmit()">
+      <div *ngFor="let asset of assetData">
+        <input type="checkbox" (change)="onChange(asset.id, $any($event.target)?.checked)">
+        {{asset.name}}
+      </div>
+      <div class="row">
+        <button type="submit"
+        class="btn btn-primary pull-right">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

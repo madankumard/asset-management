@@ -1,0 +1,38 @@
+<form [formGroup]="documentForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-xs-3">
+      <label for="documenttype">Select Document: </label>
+      <select formControlName="selectedDocument"
+              id="documenttype"
+              class="form-control">
+        <option [ngValue]="null" disabled>Select Document Type</option>
+        <option *ngFor="let document of documentType" [ngValue]="document.id">
+          {{document.name}}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">
+      <label for="file">Upload File</label>
+      <input type="file"
+             id="file"
+             formControlName="selectedFile"
+             class="form-control"
+             (change)="onFileChange($event)">
+    </div>
+  </div>
+  <div class="row">
+<!--    <pdf-viewer [src]="previewUrl"
+                [original-size]="false"
+                [render-text]='false'
+                [show-all]="false"
+                style="display: block; height: 300px;">
+    </pdf-viewer>-->
+  </div>
+  <div class="row">
+    <button type="submit"
+    class="btn btn-primary pull-right"
+    style="margin-top: 20px;">Save</button>
+  </div>
+</form>

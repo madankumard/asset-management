@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-xs-5">
+    <label for="taxtype">Select Tax ID Type</label>
+    <select [(ngModel)]="selectedOption"
+            id="taxtype"
+            name="taxtype"
+            class="form-control"
+            (change)="onTaxTypeChange()">
+      <option class="dropdown-item" disabled selected value="undefined">Select an Option</option>
+      <option *ngFor="let taxoption of taxType" [ngValue]="taxoption.value">{{taxoption.name}}</option>
+    </select>
+  </div>
+  <div class="col-xs-5">
+    <label for="taxid">Enter Tax ID: </label>
+    <input type="text"
+           id="taxid"
+           class="form-control"
+           name="taxid"
+           [(ngModel)]="taxId"
+           (change)="onTaxIdChange()"
+           required>
+  </div>
+</div>
+<div style="margin-bottom: 20px">
+
+</div>
