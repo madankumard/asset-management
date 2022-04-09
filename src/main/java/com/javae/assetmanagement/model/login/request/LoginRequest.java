@@ -1,4 +1,4 @@
-package com.javae.assetmanagement.payload.request;
+package com.javae.assetmanagement.model.login.request;
 
 import javax.validation.constraints.NotBlank;
 

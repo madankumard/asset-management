@@ -1,4 +1,4 @@
-package com.javae.assetmanagement.payload.request;
+package com.javae.assetmanagement.model.login.request;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -17,7 +17,7 @@ public class SignupRequest {
     private String email;
 
     @NotBlank
-    @Size(min = 6, max = 40)
+    @Size(min = 5, max = 40)
     private String password;
 
     private Set<String> role;

@@ -1,4 +1,4 @@
-package com.javae.assetmanagement.payload.response;
+package com.javae.assetmanagement.model.login.response;
 
 public class MessageResponse {
     private String message;

@@ -5,6 +5,8 @@ import com.javae.assetmanagement.entity.AccountAsset;
 import com.javae.assetmanagement.entity.Asset;
 import com.javae.assetmanagement.repository.AccountRepository;
 import com.javae.assetmanagement.repository.AssetRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,8 @@ import java.util.*;
 
 @Service
 public class AssetServiceImpl implements AssetService{
+
+    private static final Logger logger = LoggerFactory.getLogger(AssetServiceImpl.class);
 
     private final AssetRepository assetRepository;
     private final AccountRepository accountRepository;
@@ -26,7 +30,7 @@ public class AssetServiceImpl implements AssetService{
     @Override
     public String saveAssets(String[] assets, String accountId) {
 
-        System.out.println("assets: "+ assets + "accountId: "+ accountId);
+        logger.debug("assets: {} accountId {}: ", assets, accountId);
 
         Optional<Account> accountOptional = accountRepository.findById(Long.valueOf(accountId));
 

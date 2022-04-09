@@ -27,7 +27,7 @@ public class DocumentController {
     public String fileUpload(@RequestParam String documentType,
                              @RequestParam String accountId,
                              @RequestParam("file") MultipartFile file) throws IOException {
-        logger.info("documentType: " + documentType + "accountId: " + accountId);
+        logger.info("documentType: {}, accountId: {}", documentType, accountId);
         byte[] bytes = file.getBytes();
         Document document = new Document();
         document.setDocumentType(documentType);

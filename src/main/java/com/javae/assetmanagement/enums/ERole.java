@@ -1,4 +1,4 @@
-package com.javae.assetmanagement.entity;
+package com.javae.assetmanagement.enums;
 
 public enum ERole {
     ROLE_USER,

@@ -1,4 +1,4 @@
-package com.javae.assetmanagement.payload.response;
+package com.javae.assetmanagement.model.login.response;
 
 import java.util.List;
 
