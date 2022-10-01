@@ -2,8 +2,11 @@ package com.javae.assetmanagement.controller;
 
 import com.javae.assetmanagement.entity.Account;
 import com.javae.assetmanagement.entity.Address;
+import com.javae.assetmanagement.exceptions.AccountNotFoundException;
 import com.javae.assetmanagement.model.AccountModel;
 import com.javae.assetmanagement.services.account.AccountService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,13 +20,15 @@ import java.util.Optional;
 @RequestMapping("/api/account")
 public class AccountController {
 
+    private static final Logger logger = LoggerFactory.getLogger(AccountController.class);
+
     @Autowired
     private AccountService accountService;
 
     @PostMapping(value = "/save")
     public ResponseEntity<Account> saveAccount(@RequestBody AccountModel accountModel) {
         Account account = new Account();
-        System.out.println(accountModel);
+        logger.debug("AccountModel: "+ accountModel);
         Address address = new Address();
         BeanUtils.copyProperties(accountModel, address);
         account.setHomeAddress(address);
@@ -45,7 +50,7 @@ public class AccountController {
             BeanUtils.copyProperties(account, accountModel);
             BeanUtils.copyProperties(account.getHomeAddress(), accountModel);
         } else {
-            throw new RuntimeException("Account Not Found!");
+            throw new AccountNotFoundException("Account Not Found!");
         }
 
         return new ResponseEntity<>(accountModel, HttpStatus.OK);

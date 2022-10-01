@@ -1,5 +1,7 @@
 package com.javae.assetmanagement.entity;
 
+import com.javae.assetmanagement.enums.ERole;
+
 import javax.persistence.*;
 
 @Entity

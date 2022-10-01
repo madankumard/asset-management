@@ -4,6 +4,8 @@ import com.javae.assetmanagement.entity.Account;
 import com.javae.assetmanagement.entity.Document;
 import com.javae.assetmanagement.repository.AccountRepository;
 import com.javae.assetmanagement.repository.DocumentRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,7 @@ import java.util.Optional;
 @Service
 public class DocumentServiceImpl implements DocumentService{
 
+    private static final Logger logger = LoggerFactory.getLogger(DocumentServiceImpl.class);
 
     private final DocumentRepository documentRepository;
     private final AccountRepository accountRepository;
@@ -25,7 +28,7 @@ public class DocumentServiceImpl implements DocumentService{
     @Override
     public String saveDocument(String documentType, String accountId, List<Document> documentList) {
 
-        System.out.println("accountId: "+ accountId);
+        logger.debug("accountId: "+ accountId);
 
         Optional<Account> accountOptional = accountRepository.findById(Long.valueOf(accountId));
 
